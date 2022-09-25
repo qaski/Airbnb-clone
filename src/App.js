@@ -1,31 +1,72 @@
 import React from 'react';
-import {Switch,Route} from "react-router-dom";
-import './App.css';
-import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./components/Navbar";
-import ProductList from "./components/ProductList";
-import Details from "./components/Details";
-import Cart from "./components/Cart";
-import Default from "./components/Default";
 import Modal from './components/Modal';
+import styled from 'styled-components';
+
 
 function prueva(params) {
   
 }
 
-function App() {
-  return (
-    <React.Fragment>
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={ProductList} />
-        <Route path="/details" component={Details} />
-        <Route path="/cart" component={Cart} />
-        <Route component={Default} />
-      </Switch>
-      <Modal />
-    </React.Fragment>
-  );
+
+const App = () => {
+	return (
+		<div>
+			<ContenedorBotones>
+				<Boton>☍ Filtros</Boton>
+			</ContenedorBotones>
+			<Modal />
+		</div>
+	);
 }
+
+
+
+const ContenedorBotones = styled.div`
+	padding: 40px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+`;
+
+const Boton = styled.button`
+	display: block;
+	padding: 15px 25px;
+	border-radius: 10px;
+	color: #000000;
+	border: none;
+	background: #ffffff;
+	cursor: pointer;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	transition: .3s ease all;
+
+	&:hover {
+		background: #0066FF;
+	}
+`;
+
+const Contenido = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	h1 {
+		font-size: 42px;
+		font-weight: 700;
+		margin-bottom: 10px;
+	}
+
+	p {
+		font-size: 18px;
+		margin-bottom: 20px;
+	}
+
+	img {
+		width: 100%;
+		vertical-align: top;
+		border-radius: 3px;
+	}
+`;
 
 export default App;
