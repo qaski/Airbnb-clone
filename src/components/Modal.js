@@ -1,62 +1,89 @@
-import React, { Component } from 'react'
+import React from 'react';
 import styled from 'styled-components';
-import {ProductConsumer} from '../context';
-import {ButtonContainer} from './Button';
-import {Link} from 'react-router-dom';
+import image from "./img.jpg";
 
-export default class Modal extends Component {
-    render() {
-        return (
-            <ProductConsumer>
-                {(value)=>{
-                    const {modalOpen,closeModal} =value;
-                    const {img, title,price} = value.modalProduct;
-                    if(!modalOpen){
-                        return null;
-                    }else{
-                        return (
-                            < ModalContainer >
-                            <div className="container">
-                                <div className="row">
-                                    <div id="modal" className=
-                                    "col-8 mx-auto col-md-6 col-lg-4 text-capitalize text-center p-5">
-                                    <h5>item added to the cart</h5>
-                                    <img src={img} className="img-fluid" alt="product" />
-                                    <h5>{title}</h5>
-                                    <h5 className="text-muted">price : $ {price}</h5>
-                                    <Link to='/'>
-                                    <ButtonContainer onClick={()=>closeModal()}>
-                                        continue shopiing
-                                    </ButtonContainer>
-                                    </Link>
-                                    <Link to='/cart'>
-                                    <ButtonContainer cart onClick={() => closeModal()}>
-                                         go to cart
-                                    </ButtonContainer>
-                                    </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </ModalContainer>
-                        );
-            }
-                
-        }}
-            </ProductConsumer>
-        );
+
+const Modal = () => {
+    return(
+        <>
+            <Overlay>
+                <ContenedorModal>
+                    <BotonCerrar>x</BotonCerrar>
+                    <EncabezadoModal>
+                        
+                        <h3>Filtros</h3>
+                    </EncabezadoModal>
+                    
+                    <img src={image} />
+                                 
+                </ContenedorModal>
+            </Overlay>
+        </>
+    )
+}
+
+export default Modal;
+
+const Overlay = styled.div`
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+const ContenedorModal =styled.div`
+    width: 780px;
+    min-height: 830px;
+    background: #fff;
+    position: relative;
+    border-radius: 13px;
+    box-shadow: rgba(100,100,111, 0.2) 0px 7px 29px 0px;
+    padding: 20px;
+
+`;
+const img = styled.div`
+
+`;
+
+const EncabezadoModal = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    marging-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #EBE8E8;
+    
+
+    h3{
+        font-weight: 500px;
+        font-size: 16px;
+        color: #000000;
+ 
     }
-}
-const ModalContainer =styled.div`
-position:fixed;
-top:0;
-left:0;
-right:0;
-bottom:0;
-background:rgba(0,0,0,0.3);
-display:flex;
-align-items:center;
-justify-content:center;
-#modal{
-    background:var(--mainWhite);
-}
+`;
+
+const BotonCerrar = styled.div`
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: .3s ease all;
+    border-radius: 15px;
+    color: #000000;
+
+    &:hover{
+        background: #f2f2f2;
+    }
 `;
