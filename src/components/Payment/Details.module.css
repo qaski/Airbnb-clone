@@ -1,0 +1,62 @@
+.container {
+    max-width: 350px;
+    position: fixed;
+    padding: 2rem; 
+    right: 100px;
+    border: 1px solid #abb;
+    border-radius: 7px;
+   
+}
+
+
+.lineaDivide{
+padding: 1rem 0;
+border-top:       var(--line-color) ;
+border-bottom:   var(--line-color);
+}
+
+.travelDetail {
+    display: flex;
+    gap: 1rem;
+   
+}
+.travelDetail img{
+    width: 126px;
+    height: 96px;
+    object-fit: fill;
+    border-radius: 6px;
+}
+.travelDetail h3 {
+    font-size: 1rem;
+    font-weight: normal;
+
+}
+.travelDescripcion {
+    display: flex;
+    flex-direction: column;
+}
+
+.priceInformation > p   {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.container.priceInformation span {
+    padding-left:  2rem;
+
+}
+
+.priceLene {
+    text-decoration: none;
+}
+
+span.priceLene{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.totalPrice {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    border-top: var(--line-color);
+}
