@@ -1,4 +1,5 @@
 import React from 'react'
+import style from './PayWith.css'
 
 
 
@@ -9,40 +10,46 @@ export const PayWith = () => {
      <form  accion="" id ="formulario-tarjeta" class="formulario-tarjeta"> 
      <div class="grupo" > 
     
-     <input type="text"  placeholder='Numero de tarjerta' id="inputNumeo" maxLength={"19"} autoComplete="off" />
+     <input type="text"  placeholder='Numero de tarjerta' id="inputNumero" maxLength={"19"} autoComplete="off" />
 
               </div>
 
-                     <div className="flexbox">
-                     <div className="grupo expira">
-                     <input type="text"   placeholder='Caducidad' id="inputNumeo" maxLength={"19"} autoComplete="off" />
+                     <div class="flexbox">
+                     <div class="grupo-caducidad">
+                     <input type="text"   placeholder='Caducidad' id="inputNumero" maxLength={"19"} autoComplete="off" />
                     </div>
              </div>
 
 
-             <div className="flexbox">
-                     <div className="grupo cvv">
-                     <input type="text"   placeholder='Codigo CVV' id="inputNumeo" maxLength={"19"} autoComplete="off" />
+             <div class="flexbox">
+                     <div class="grupo cvv">
+                     <input type="text"   placeholder='Codigo CVV' id="inputNumero" maxLength={"19"} autoComplete="off" />
                     </div>
              </div>
 
   
-             <div className="flexbox">
-                     <div className="grupo CP">
-                     <input type="text"   placeholder='Codigo Postal' id="inputNumeo" maxLength={"19"} autoComplete="off" />
+             <div class="flexbox">
+                     <div class="grupo CP">
+                     <input type="text"   placeholder='Codigo Postal' id="inputNumero" maxLength={"19"} autoComplete="off" />
                     </div>
              </div>
-             <div className="flexbox">
-                     <div className="Pais/Region" id="selectPais/Regio">
+
+
+             <div class="flexbox">
+                     <div class="Grupo-selec" id="selectPais-Regio">
                     
-                     <select name="Pais/Region" id="selectPais/Regio">
+                     <select name="Pais-Region" id="selectPais-Regio">
                       <option disabled selected>Pais/Regio</option>
                      </select>
+                    
 
                     </div>
+                    
              </div>
-    <p>Ingrese cupon</p>
-     </form>
+             <button type='submit' class="btn-confirma-paga">Confirma y paga </button>
+    <h6>Ingrese cupon</h6>
+   
+       </form>
     
   )
 
