@@ -1,13 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import {ProductConsumer} from '../context';
 import {Link} from 'react-router-dom';
 import {ButtonContainer} from './Button';
 import 'react-datepicker/dist/react-datepicker.css'
 
-export default class Details extends Component {
-    render() {
-        return (
-            <ProductConsumer>
+const Details = () => {
+    const fetchdata = async () => {
+        const response = await fetch("http://localhost:8080/api/properties/2")
+        const json = await response.json()
+        console.log(json)
+    }
+    useEffect(()=>{
+        fetchdata()
+    },[]) 
+  return (
+    <ProductConsumer>
                 {value=>{
                    const {id, company, img, info, price, title, inCart} = value.detailProduct; 
                    return(
@@ -105,12 +112,11 @@ export default class Details extends Component {
                                 </div>
                                 </div>  
                                 </div>
-                            </div>
-                        
-                       
+                            </div>      
                    ); 
                 }}
             </ProductConsumer>
-        )
-    }  
+  )
 }
+
+export default Details
