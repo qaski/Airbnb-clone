@@ -3,21 +3,25 @@ import styled from 'styled-components';
 import image from "./img.jpg";
 
 
-const Modal = () => {
+const Modal = ({children, estado, cambiarEstado}) => {
     return(
         <>
-            <Overlay>
-                <ContenedorModal>
-                    <BotonCerrar>x</BotonCerrar>
-                    <EncabezadoModal>
+            {estado &&
+                <Overlay>
+                    <ContenedorModal>
+                        <BotonCerrar onClick={() => cambiarEstado(!estado)}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg></BotonCerrar>
+                        <EncabezadoModal>
+                            <h3>Filtros</h3>
+                        </EncabezadoModal>
                         
-                        <h3>Filtros</h3>
-                    </EncabezadoModal>
-                    
-                    <img src={image} />
-                                 
-                </ContenedorModal>
-            </Overlay>
+                        <img src={image} />
+                        {children}             
+                    </ContenedorModal>
+                </Overlay>
+            }
         </>
     )
 }
@@ -33,13 +37,13 @@ const Overlay = styled.div`
     background: rgba(0,0,0,.5);
     padding: 40px;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 `;
 
 const ContenedorModal =styled.div`
     width: 780px;
-    min-height: 830px;
+    min-height: 530px;
     background: #fff;
     position: relative;
     border-radius: 13px;
@@ -55,8 +59,8 @@ const EncabezadoModal = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    marging-bottom: 20px;
-    padding-bottom: 20px;
+    marging-bottom: 10px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #EBE8E8;
     
 
@@ -70,9 +74,8 @@ const EncabezadoModal = styled.div`
 
 const BotonCerrar = styled.div`
     position: absolute;
-    top: 20px;
-    left: 20px;
-    
+    top: 15px;
+    left: 15px;
     justify-content: center;
     width: 30px;
     height: 30px;
@@ -85,5 +88,10 @@ const BotonCerrar = styled.div`
 
     &:hover{
         background: #f2f2f2;
+    }
+
+    svg{
+        width: 100%;
+        height: 100%;
     }
 `;
