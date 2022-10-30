@@ -4,17 +4,10 @@ import {Link} from 'react-router-dom';
 import {ButtonContainer} from './Button';
 import 'react-datepicker/dist/react-datepicker.css'
 
-const Details = () => {
-    const fetchdata = async () => {
-        const response = await fetch("http://localhost:8080/api/properties/2")
-        const json = await response.json()
-        console.log(json)
-    }
-    useEffect(()=>{
-        fetchdata()
-    },[]) 
-  return (
-    <ProductConsumer>
+export default class Details extends Component {
+    render() {
+        return (
+            <ProductConsumer>
                 {value=>{
                    const {id, company, img, info, price, title, inCart} = value.detailProduct; 
                    return(
@@ -86,7 +79,7 @@ const Details = () => {
                                         <li class="col list-group-item">Huespedes</li>
                                     </ul>
                                     </div>
-                                    <a href="#" class="btn btn-primary" type="button">Reserva</a>
+                                    <a href="#" class="btn btn-primary" type="button">Reservar</a>
                                 </div>
                                 </div>
                                 <div className="row">
@@ -112,11 +105,12 @@ const Details = () => {
                                 </div>
                                 </div>  
                                 </div>
-                            </div>      
+                            </div>
+                        
+                       
                    ); 
                 }}
             </ProductConsumer>
-  )
+        )
+    }  
 }
-
-export default Details
