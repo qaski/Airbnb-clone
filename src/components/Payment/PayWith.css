@@ -55,3 +55,8 @@ cursor: pointer;
 .btn-confirma-paga:hover {
     background-color: #CF4354;
 }
+
+*{
+    padding:  5px;
+}
+

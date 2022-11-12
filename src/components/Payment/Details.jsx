@@ -23,8 +23,10 @@ const Details = () => {
       <section className={style.priceInformation}>
         <h3 >Información del precio</h3>
         <p> <span className= {style.priceLene}>$439,048.09 COP x 2 noches </span> $878,096.18 COP </p>
-        <p> <span className= {style.priceLene}> Tarifa de limpieza    </span>        $288,263.90 COP  </p>
-        <p> <span className= {style.priceLene}>Tarifa por servicio   </span>      $288,263.90 COP</p>
+
+        <p> <span className= {style.priceLene}>  <a href="#openModal">Descuento por estadia larga</a>  </span> $-151.06COP </p>
+        <p> <span className= {style.priceLene}>  <a href="#openModal1">Tarifa de limpieza </a>   </span>        $288,263.90 COP  </p>
+        <p> <span className= {style.priceLene}> <a href="#openModal2">Tarifa por servicio </a>   </span>      $288,263.90 COP</p>
         
       </section>
       <p className={style.totalPrice}>Total (COP)  <span className= {style.priceLene}> $1,400,696.46 </span></p>

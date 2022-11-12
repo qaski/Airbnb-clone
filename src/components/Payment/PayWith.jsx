@@ -1,36 +1,61 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 import style from './PayWith.css'
 
 
 
 
-export const PayWith = () => {
-  return (
-    
-     <form  accion="" id ="formulario-tarjeta" class="formulario-tarjeta"> 
-     <div class="grupo" > 
-    
-     <input type="text"  placeholder='Numero de tarjerta' id="inputNumero" maxLength={"19"} autoComplete="off" />
+export const PayWith = ({children}) => {
 
+       const [ contries, setCountries ] = useState([])
+       const getContries =  async() => {
+           const response = await fetch('https://restcountries.com/v3.1/all')
+           const json = await response.json()
+           const responseCountries = []
+
+           json.forEach(country =>  {
+              responseCountries.push(country.name.common)     
+           }) 
+           responseCountries.sort()
+           setCountries(responseCountries)
+       }
+       useEffect(()=> {
+              getContries()
+       }, [])  
+
+  return (
+
+       
+    
+     <form  accion="" id ="formulario-tarjeta" class="formulario-tarjeta ml-5"> 
+     <div class="grupo" >     
+     
+     
+     
+     <input id="tarjeta" type="number" maxLength={5} required pattern="[0-9\s]"    placeholder="Numero de tarjeta" />
+     
               </div>
+
 
                      <div class="flexbox">
                      <div class="grupo-caducidad">
-                     <input type="text"   placeholder='Caducidad' id="inputNumero" maxLength={"19"} autoComplete="off" />
+                     <input id="caducidad" type="number"    required pattern="[0-9\s]{4}" autocomplete="cc-number" placeholder="Caducidad" />
+
                     </div>
              </div>
 
-
              <div class="flexbox">
                      <div class="grupo cvv">
-                     <input type="text"   placeholder='Codigo CVV' id="inputNumero" maxLength={"19"} autoComplete="off" />
+                     <input id="cvv" type="number"   required pattern="[0-9\s]{3}"  maxlength="3" placeholder="CVV" />
+
+
                     </div>
              </div>
 
   
              <div class="flexbox">
                      <div class="grupo CP">
-                     <input type="text"   placeholder='Codigo Postal' id="inputNumero" maxLength={"19"} autoComplete="off" />
+                     <input type="number" required  placeholder='Codigo Postal' id="inputNumero" maxLength={"19"} autoComplete="off" />
                     </div>
              </div>
 
@@ -38,19 +63,24 @@ export const PayWith = () => {
              <div class="flexbox">
                      <div class="Grupo-selec" id="selectPais-Regio">
                     
-                     <select name="Pais-Region" id="selectPais-Regio">
-                      <option disabled selected>Pais/Regio</option>
+                     <select  >
+                            {contries.map(country => <option key={country} value={country}> {country}</option> )   }   
+                         
                      </select>
                     
 
-                    </div>
+                    </div>                
+
                     
              </div>
+              {children}
+
              <button type='submit' class="btn-confirma-paga">Confirma y paga </button>
-    <h6>Ingrese cupon</h6>
-   
-       </form>
+
     
+       </form>
+   
+
   )
 
 }
