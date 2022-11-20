@@ -32,14 +32,12 @@ export const PayWith = ({children}) => {
      
      
      
-     <input id="tarjeta" type="number" maxLength={5} required pattern="[0-9\s]"    placeholder="Numero de tarjeta" />
+     <input id="tarjeta" maxLength={5}  type="number"  required pattern="[0-9\s]"    placeholder="Numero de tarjeta" />
      
               </div>
-
-
                      <div class="flexbox">
                      <div class="grupo-caducidad">
-                     <input id="caducidad" type="number"    required pattern="[0-9\s]{4}" autocomplete="cc-number" placeholder="Caducidad" />
+                     <input id="caducidad" type= "text"  maxLength={2} required pattern="[0-9\s]{4}" autocomplete="cc-number" placeholder="Caducidad" />
 
                     </div>
              </div>
